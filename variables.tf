@@ -102,3 +102,9 @@ variable "additional_networks" {
   default = []
 }
 
+variable "ipv6_ula_prefix_filter" {
+  description = "Optional prefix filter for selecting ULA IPv6 address (e.g., 'fd97:cafe'). If not specified, returns the first ULA address found."
+  type        = string
+  default     = null
+}
+
