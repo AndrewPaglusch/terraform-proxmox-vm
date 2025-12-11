@@ -41,6 +41,12 @@ resource "proxmox_virtual_environment_vm" "vm" {
             address = "${var.primary_network.address}/${var.primary_network.cidr}"
             gateway = var.primary_network.gateway
           }
+          dynamic "ipv6" {
+            for_each = var.enable_ipv6 ? [1] : []
+            content {
+              address = "auto"
+            }
+          }
         }
       }
 

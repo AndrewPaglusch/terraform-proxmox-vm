@@ -88,6 +88,12 @@ variable "primary_network" {
   default = null
 }
 
+variable "enable_ipv6" {
+  description = "Enable IPv6 with SLAAC (auto configuration)"
+  type        = bool
+  default     = false
+}
+
 variable "additional_networks" {
   description = "Additional network interfaces for bridge communication"
   type = list(object({
