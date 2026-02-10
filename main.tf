@@ -114,6 +114,8 @@ resource "proxmox_virtual_environment_vm" "vm" {
     type = var.os_type
   }
 
+  hotplug = length(var.hotplug) > 0 ? join(",", var.hotplug) : "0"
+
   agent {
     enabled = true
   }

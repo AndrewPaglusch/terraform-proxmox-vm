@@ -108,6 +108,17 @@ variable "additional_networks" {
   default = []
 }
 
+variable "hotplug" {
+  description = "Selectively enable hotplug features. Set to a list of features (disk, network, usb, memory, cpu), or use the default of all enabled. Set to [] to disable."
+  type        = list(string)
+  default     = ["disk", "network", "usb", "memory", "cpu"]
+
+  validation {
+    condition     = alltrue([for f in var.hotplug : contains(["disk", "network", "usb", "memory", "cpu"], f)])
+    error_message = "Valid hotplug features are: disk, network, usb, memory, cpu."
+  }
+}
+
 variable "ipv6_ula_prefix_filter" {
   description = "Optional prefix filter for selecting ULA IPv6 address (e.g., 'fd97:cafe'). If not specified, returns the first ULA address found."
   type        = string
