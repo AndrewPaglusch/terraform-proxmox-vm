@@ -66,6 +66,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
     cores   = var.hardware.cpu_cores
     sockets = var.cpu_sockets
     type    = var.cpu_type
+    numa    = var.numa || contains(var.hotplug, "memory")
   }
 
   memory {

@@ -119,6 +119,12 @@ variable "hotplug" {
   }
 }
 
+variable "numa" {
+  description = "Enable NUMA. Automatically forced on when hotplug includes cpu or memory."
+  type        = bool
+  default     = false
+}
+
 variable "ipv6_ula_prefix_filter" {
   description = "Optional prefix filter for selecting ULA IPv6 address (e.g., 'fd97:cafe'). If not specified, returns the first ULA address found."
   type        = string
