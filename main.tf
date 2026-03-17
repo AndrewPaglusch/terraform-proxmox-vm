@@ -77,6 +77,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
     datastore_id = var.hardware.storage
     interface    = "virtio0"
     size         = var.hardware.disk_size
+    discard      = var.hardware.discard
   }
 
   dynamic "disk" {
@@ -87,6 +88,7 @@ resource "proxmox_virtual_environment_vm" "vm" {
       interface    = disk.value.interface
       size         = disk.value.size
       backup       = disk.value.backup
+      discard      = disk.value.discard
     }
   }
 

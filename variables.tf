@@ -39,6 +39,7 @@ variable "hardware" {
     memory    = number
     cpu_cores = number
     storage   = string
+    discard   = optional(string, "on")
   })
 }
 
@@ -51,6 +52,7 @@ variable "additional_disks" {
     interface    = string
     datastore_id = optional(string)
     file_format  = optional(string, "raw")
+    discard      = optional(string, "on")
   }))
   default = []
 }
