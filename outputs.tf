@@ -9,10 +9,7 @@ output "ula_ipv6_address" {
     flatten([
       for addr_list in proxmox_virtual_environment_vm.vm.ipv6_addresses : [
         for addr in addr_list : addr
-        if length(regexall("^fd[0-9a-f]{2}:", addr)) > 0 && (
-          var.ipv6_ula_prefix_filter == null ||
-          startswith(addr, var.ipv6_ula_prefix_filter)
-        )
+        if length(regexall(var.ipv6_ula_match_pattern, addr)) > 0
       ]
     ])[0],
     null

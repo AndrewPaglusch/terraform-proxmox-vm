@@ -127,9 +127,9 @@ variable "numa" {
   default     = false
 }
 
-variable "ipv6_ula_prefix_filter" {
-  description = "Optional prefix filter for selecting ULA IPv6 address (e.g., 'fd97:cafe'). If not specified, returns the first ULA address found."
+variable "ipv6_ula_match_pattern" {
+  description = "Regex pattern for selecting the ULA IPv6 address. Default matches any address in the fd00::/8 ULA subnet."
   type        = string
-  default     = null
+  default     = "^fd[0-9a-f]{2}:"
 }
 
