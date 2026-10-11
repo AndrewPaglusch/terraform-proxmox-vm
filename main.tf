@@ -96,7 +96,6 @@ resource "proxmox_virtual_environment_vm" "vm" {
   network_device {
     bridge   = var.primary_network.bridge
     vlan_id  = var.primary_network.vlan
-    enabled  = var.primary_network.enabled
     firewall = var.primary_network.firewall
     model    = var.primary_network.model
   }
@@ -107,7 +106,6 @@ resource "proxmox_virtual_environment_vm" "vm" {
     content {
       bridge   = network_device.value.bridge
       vlan_id  = network_device.value.vlan
-      enabled  = network_device.value.enabled
       firewall = network_device.value.firewall
       model    = network_device.value.model
     }

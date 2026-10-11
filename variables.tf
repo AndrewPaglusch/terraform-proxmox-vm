@@ -85,7 +85,6 @@ variable "primary_network" {
     bridge   = optional(string, "vmbr0")
     model    = optional(string, "virtio")
     firewall = optional(bool, false)
-    enabled  = optional(bool, true)
   })
   default = null
 }
@@ -103,7 +102,6 @@ variable "additional_networks" {
     vlan       = optional(number)
     ip_address = optional(string)
     cidr       = optional(number, 24)
-    enabled    = optional(bool, true)
     firewall   = optional(bool, false)
     model      = optional(string, "virtio")
   }))
@@ -132,4 +130,3 @@ variable "ipv6_ula_match_pattern" {
   type        = string
   default     = "^fd[0-9a-f]{2}:"
 }
-
