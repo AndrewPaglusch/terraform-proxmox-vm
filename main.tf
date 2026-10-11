@@ -29,6 +29,13 @@ resource "proxmox_virtual_environment_vm" "vm" {
       datastore_id      = var.hardware.storage
       user_data_file_id = proxmox_virtual_environment_file.cloud_init[0].id
 
+      dynamic "dns" {
+        for_each = var.dns_search_domain != null ? [1] : []
+        content {
+          domain = var.dns_search_domain
+        }
+      }
+
       # Network configuration is handled by Proxmox, rather than CloudInit network sections.
       # Proxmox generates the CloudInit network configuration automatically based on the ip_config blocks,
       # which maps to network_device blocks by order (first ip_config -> first network_device, second -> second, etc.)

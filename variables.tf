@@ -130,3 +130,9 @@ variable "ipv6_ula_match_pattern" {
   type        = string
   default     = "^fd[0-9a-f]{2}:"
 }
+
+variable "dns_search_domain" {
+  description = "Search domain written into the cloud-init network config. Proxmox falls back to the node's own search domain when unset."
+  type        = string
+  default     = null
+}
